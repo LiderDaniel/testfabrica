@@ -26,5 +26,50 @@ namespace f2
         {
             Close();    
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BT_BUSCAR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BT_LISTA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BT_AGREGAR_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

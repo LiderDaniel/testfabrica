@@ -34,8 +34,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Bt_ListCliente = new System.Windows.Forms.Button();
+            this.Bt_Agregar = new System.Windows.Forms.Button();
             this.gc_cliente = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -69,6 +69,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(292, 20);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // textBox2
             // 
@@ -76,6 +78,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(292, 20);
             this.textBox2.TabIndex = 3;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -83,6 +86,8 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(292, 20);
             this.textBox3.TabIndex = 4;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // label3
             // 
@@ -93,33 +98,37 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "APELLIDOS";
             // 
-            // button1
+            // Bt_ListCliente
             // 
-            this.button1.Location = new System.Drawing.Point(228, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "LISTA DE CLIENTES";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Bt_ListCliente.Location = new System.Drawing.Point(228, 390);
+            this.Bt_ListCliente.Name = "Bt_ListCliente";
+            this.Bt_ListCliente.Size = new System.Drawing.Size(233, 23);
+            this.Bt_ListCliente.TabIndex = 7;
+            this.Bt_ListCliente.Text = "LISTA DE CLIENTES";
+            this.Bt_ListCliente.UseVisualStyleBackColor = true;
+            this.Bt_ListCliente.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // Bt_Agregar
             // 
-            this.button2.Location = new System.Drawing.Point(500, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "AGREGAR ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Bt_Agregar.Location = new System.Drawing.Point(500, 390);
+            this.Bt_Agregar.Name = "Bt_Agregar";
+            this.Bt_Agregar.Size = new System.Drawing.Size(75, 23);
+            this.Bt_Agregar.TabIndex = 8;
+            this.Bt_Agregar.Text = "AGREGAR ";
+            this.Bt_Agregar.UseVisualStyleBackColor = true;
+            this.Bt_Agregar.Click += new System.EventHandler(this.button2_Click);
             // 
             // gc_cliente
             // 
+            this.gc_cliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gc_cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gc_cliente.Location = new System.Drawing.Point(32, 12);
             this.gc_cliente.Name = "gc_cliente";
-            this.gc_cliente.ReadOnly = true;
-            this.gc_cliente.Size = new System.Drawing.Size(1137, 296);
+            this.gc_cliente.Size = new System.Drawing.Size(340, 296);
             this.gc_cliente.TabIndex = 10;
+            this.gc_cliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gc_cliente_CellDoubleClick);
             // 
             // button3
             // 
@@ -129,6 +138,7 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "ELIMINAR";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -138,6 +148,7 @@
             this.button4.TabIndex = 11;
             this.button4.Text = "EDITAR";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -153,22 +164,25 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 425);
+            this.ClientSize = new System.Drawing.Size(1175, 425);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.gc_cliente);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Bt_Agregar);
+            this.Controls.Add(this.Bt_ListCliente);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.Coral;
             this.Name = "hijo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLIENTE";
             this.Load += new System.EventHandler(this.hijo_Load);
+            this.Leave += new System.EventHandler(this.hijo_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.gc_cliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,8 +197,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Bt_ListCliente;
+        private System.Windows.Forms.Button Bt_Agregar;
         private System.Windows.Forms.DataGridView gc_cliente;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;

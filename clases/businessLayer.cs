@@ -7,6 +7,11 @@ using Oracle.DataAccess.Types;
 using Oracle.DataAccess;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Drawing;
+
+
+
 
 namespace f2
 {
@@ -243,5 +248,112 @@ namespace f2
 
         }
 
+
+
+
+        public string SP_INSERT_CLIENTES(string PI_NOMBRE,  string PI_APELLIDO)
+        {
+            /* --
+            --
+            -- procedimiento para insertar los clientes de CLT
+            --
+
+                clt.pkg_abm_clientes_contabilidad.sp_inserta_clientes_clt(pi_descripcion => :pi_descripcion,
+                                                            pi_ruc => :pi_ruc,
+                                                            pi_direccion => :pi_direccion,
+                                                            pi_telefono => :pi_telefono,
+                                                            po_retorno => :po_retorno); */
+            string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_ABM.SP_INSERT_CLIENTES", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+            coman.Parameters.Add("PI_NOMBRE", PI_NOMBRE.Trim());
+            coman.Parameters.Add("PI_APELLIDO", PI_APELLIDO.Trim());
+
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            return datos;
+
+        }
+
+
+
+        public void SP_DELETE_CLIENTES(double pi_codigo)
+        {
+
+            //string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_ABM.SP_DELETE_CLIENTES", cone);
+            coman.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            coman.Parameters.Add("CODIGO_CLIENTE", OracleDbType.Int32).Value = Convert.ToInt32(pi_codigo);
+
+            //coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            //coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                //datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            //return datos;
+
+        }
+
+
+        public string SP_UPDATE_CLIENTES(string PI_NOMBRE, string PI_APELLIDO, int PI_CODIGO_CLIENTE)
+        {
+
+         
+
+            string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_ABM.SP_UPDATE_CLIENTES", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+            
+            coman.Parameters.Add("PI_NOMBRE", PI_NOMBRE);
+            coman.Parameters.Add("PI_APELLIDO", PI_APELLIDO);
+            coman.Parameters.Add("PI_CODIGO_CLIENTE", PI_CODIGO_CLIENTE);
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                //datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            MessageBox.Show("Se a Actualizado los datos");
+            return datos;
+
+        }
+
+
     }
-}
+
+    }
+
