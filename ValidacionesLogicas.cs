@@ -44,6 +44,24 @@ namespace f2
         {
             return pCorreo !=null && Regex.IsMatch(pCorreo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
         }
-        
+
+        public static bool sololetras(KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar)) //capturamos cada tecla que se preciona
+            {
+                e.Handled = false;
+                return true;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else
+            {
+                e.Handled = true;
+                return false;
+            }
+        }
     }
 }

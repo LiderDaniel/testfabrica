@@ -112,7 +112,7 @@
             this.BT_LISTA.Name = "BT_LISTA";
             this.BT_LISTA.Size = new System.Drawing.Size(233, 23);
             this.BT_LISTA.TabIndex = 18;
-            this.BT_LISTA.Text = "LISTA DE CLIENTES";
+            this.BT_LISTA.Text = "LISTA DE PRODUCTOS";
             this.BT_LISTA.UseVisualStyleBackColor = true;
             this.BT_LISTA.Click += new System.EventHandler(this.BT_LISTA_Click);
             // 
@@ -266,10 +266,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(9, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 15);
+            this.label4.Size = new System.Drawing.Size(146, 15);
             this.label4.TabIndex = 37;
             this.label4.Text = "LISTA DE PRODUCTOS";
             // 

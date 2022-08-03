@@ -113,20 +113,8 @@ namespace f2
                 return;
             }
 
-                if (String.IsNullOrEmpty(textBox2.Text)  )
-            {
-                label4.Text = ("Nose Cargo el campo Nombre");
-
-            }
-            else
-                if (string.IsNullOrEmpty(textBox3.Text))
-            {
-                apellidomensaje.Text = ("Nose Cargo el campo Apellido");
-            }
-
-            else
-
-            {
+            
+           
                 //insert  ala tabla
 
                 label4.Text = (" ");
@@ -134,7 +122,8 @@ namespace f2
 
                 var datos = capaNegociosHijo.SP_INSERT_CLIENTES(Nombre, Apellido);
                 MessageBox.Show("Los Datos Ingresados Fueron Guardados Correctamente");
-            }
+            cargatabla();
+            limpiar();
 
         }
 
@@ -147,18 +136,14 @@ namespace f2
 
                 return;
             }
-            if (String.IsNullOrEmpty(textBox1.Text))
-            {
-                codigomensaje.Text = ("Nose Cargo el Campo Codigo");
-
-            }
-            else
-            {
-                codigomensaje.Text = (" ");
+           
+                
 
                 capaNegociosHijo.SP_DELETE_CLIENTES(Convert.ToDouble(textBox1.Text));
                 MessageBox.Show("El cliente con numero de id : " + textBox1.Text + " Fue Eliminado ");
-            }
+                cargatabla();
+                limpiar();
+            
 
         }
 
@@ -211,30 +196,9 @@ namespace f2
 
                 return;
             }
-                if (String.IsNullOrEmpty(textBox2.Text))
-            {
-               
-                label4.Text = ("Debe de ingresar el nombre para editar ");
+            
 
-            }
-
-              if (string.IsNullOrEmpty(textBox3.Text))
-            {
-
-                apellidomensaje.Text = ("Debe de ingresar el apellido para editar");
-
-            }
-            else
-
-            if (string.IsNullOrEmpty(textBox1.Text))
-            {
-
-                codigomensaje.Text = ("Debe Ingresar un Codigo para  Poder  Editar");
-            }
-
-            else
-
-            {
+          
                 //insert  ala tabla
                
                     label4.Text = (" ");
@@ -243,21 +207,25 @@ namespace f2
                     capaNegociosHijo.SP_UPDATE_CLIENTES(PI_NOMBRE, PI_APELLIDO, PI_CODIGO_CLIENTE);
 
                     MessageBox.Show("La Edicion fue Realizada el Cliente con codigo : " + textBox1.Text + " con Exito ");
-
-
+                cargatabla();
+                limpiar();
             
 
-            }
+            
 
         }
         ErrorProvider errorP = new ErrorProvider();
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-          bool valida =   ValidacionesLogicas.soloNumeros(e);
+            bool valida = ValidacionesLogicas.soloNumeros(e);
             if (!valida)
                 errorP.SetError(textBox1, "Solo se acepta numeros");
             else
                 errorP.Clear();
+
+
+            
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -277,7 +245,7 @@ namespace f2
 
         private void textBox3_Leave(object sender, EventArgs e)
         {
-
+            
         }
 
         private void hijo_Leave(object sender, EventArgs e)
@@ -301,7 +269,34 @@ namespace f2
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
+            bool valida = ValidacionesLogicas.sololetras(e);
 
+            if(!valida)
+           
+                errorP.SetError(textBox2, "Solo se acepta letras");
+            else
+                    errorP.Clear();
+           
+        }
+
+        //Limpiar lo texbox
+        public void limpiar()
+        {
+            textBox1.Clear(); 
+            textBox2.Clear();
+            textBox3.Clear();
+
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool valida = ValidacionesLogicas.sololetras(e);
+
+            if (!valida)
+
+                errorP.SetError(textBox3, "Solo se acepta letras");
+            else
+                errorP.Clear();
         }
     }
 }

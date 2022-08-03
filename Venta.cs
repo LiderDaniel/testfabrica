@@ -108,7 +108,10 @@ namespace f2
             var datos = capaNegociosVenta.SP_INSERT_VENTA(PI_COD_PRODUCTO, PI_CANTIDAD, PI_NOMBRE_PRODUCTO, PI_COD_CLIENTE);
 
                 MessageBox.Show("Los Datos ingresados fueron guardados correctamente");
-            
+            limpiar();
+            listarventa();
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -123,6 +126,8 @@ namespace f2
             capaNegociosVenta.SP_DELETE_VENTA(Convert.ToInt32(textBox_codventa.Text));
 
             MessageBox.Show(" La Venta con Codigo : " + textBox_codventa.Text + " Fue Eliminada");
+            limpiar();
+            listarventa();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -202,6 +207,8 @@ namespace f2
 
             capaNegociosVenta.SP_UPDATE_VENTA(PI_COD_PRODUCTO, PI_CANTIDAD, PI_NOMBRE_PRODUCTO, PI_COD_CLIENTE, PI_CODIGO_VENTA, V_PRECIO);
             MessageBox.Show("La Edicion fue Realizada el Cliente con codigo: " + textBox_codventa.Text + " con Exito ");
+            limpiar();
+            listarventa();
         }
 
         ErrorProvider errorP = new ErrorProvider();
@@ -244,6 +251,14 @@ namespace f2
             else
 
                 errorP.Clear();
+
+            bool valida = ValidacionesLogicas.sololetras(e);
+
+            if (!valida)
+
+                errorP.SetError(textBox_nombreproducto, "Solo se acepta letras");
+            else
+                errorP.Clear();
         }
 
         private void textBox_codcliente_KeyPress(object sender, KeyPressEventArgs e)
@@ -262,6 +277,23 @@ namespace f2
                 errorP.SetError(textBox_precioventa, "Solo se acepta numeros");
             else
                 errorP.Clear();
+        }
+
+        private void Venta_Load(object sender, EventArgs e)
+        {
+
+        }
+        //limpiar 
+
+        private void limpiar()
+        {
+            textBox_codventa.Clear();
+            textBox_codproducto.Clear();
+            textBox_cantidad.Clear();
+            textBox_precioventa.Clear();
+            textBox_codcliente.Clear();
+            textBox_nombreproducto.Clear();
+
         }
     }
     }

@@ -175,6 +175,10 @@ namespace f2
                 var datos = capaNegociosProducto.SP_INSERT_PRODUCTO(PI_PRODUCTO, PI_PRECIO, PI_CANTIDAD);
 
                 MessageBox.Show("Los Datos ingresados fueron guardados correctamente");
+
+
+                listarproducto();
+                limpiar();
             }
 
 
@@ -249,6 +253,8 @@ namespace f2
                 capaNegociosProducto.SP_UPDATE_PRODUCTO(PI_PRODUCTO, PI_PRECIO, PI_CANTIDAD, PI_CODIGO_PRODCUTO);
 
                 MessageBox.Show("La Edicion fue Realizada el Cliente con codigo: " + textBox1.Text + " con Exito ");
+                listarproducto();
+                limpiar();
             }
 
            
@@ -309,7 +315,22 @@ namespace f2
 
         private void texbox_nombre_KeyPress(object sender, KeyPressEventArgs e)
         {
+            bool valida = ValidacionesLogicas.sololetras(e);
 
+            if (!valida)
+
+                errorP.SetError(texbox_nombre, "Solo se acepta letras");
+            else
+                errorP.Clear();
+        }
+
+        public void limpiar()
+        {
+
+            textBox1.Clear();
+            texbox_nombre.Clear();
+            textBox_Precio.Clear();
+            textBox4_Cantidad.Clear();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(hijo));
             this.gc_cliente = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.apellidomensaje = new System.Windows.Forms.Label();
             this.codigomensaje = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gc_cliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,6 +107,7 @@
             this.textBox3.Size = new System.Drawing.Size(292, 20);
             this.textBox3.TabIndex = 4;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // label3
@@ -193,14 +195,16 @@
             this.codigomensaje.Size = new System.Drawing.Size(0, 13);
             this.codigomensaje.TabIndex = 15;
             // 
-            // label5
+            // label7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(29, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "LISTA DE CLIENTES";
+            this.label7.AutoSize = true;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(26, -1);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(110, 15);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "LISTA DE VENTA";
             // 
             // hijo
             // 
@@ -208,7 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1196, 425);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.codigomensaje);
             this.Controls.Add(this.apellidomensaje);
             this.Controls.Add(this.label4);
@@ -226,6 +230,7 @@
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ForeColor = System.Drawing.Color.Black;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "hijo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLIENTE";
@@ -254,6 +259,6 @@
         private System.Windows.Forms.Label apellidomensaje;
         private System.Windows.Forms.Label codigomensaje;
         private System.Windows.Forms.DataGridView gc_cliente;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
     }
 }

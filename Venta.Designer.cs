@@ -47,6 +47,7 @@
             this.textBox_codcliente = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox_precioventa = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridventa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             this.datagridventa.BackgroundColor = System.Drawing.SystemColors.Info;
             this.datagridventa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridventa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridventa.Location = new System.Drawing.Point(12, 12);
+            this.datagridventa.Location = new System.Drawing.Point(10, 39);
             this.datagridventa.Name = "datagridventa";
             this.datagridventa.Size = new System.Drawing.Size(642, 296);
             this.datagridventa.TabIndex = 21;
@@ -114,7 +115,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(430, 311);
+            this.label3.Location = new System.Drawing.Point(428, 338);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 17;
@@ -122,7 +123,7 @@
             // 
             // textBox_cantidad
             // 
-            this.textBox_cantidad.Location = new System.Drawing.Point(433, 337);
+            this.textBox_cantidad.Location = new System.Drawing.Point(431, 364);
             this.textBox_cantidad.MaxLength = 1000;
             this.textBox_cantidad.Name = "textBox_cantidad";
             this.textBox_cantidad.Size = new System.Drawing.Size(192, 20);
@@ -131,7 +132,7 @@
             // 
             // textBox_codproducto
             // 
-            this.textBox_codproducto.Location = new System.Drawing.Point(183, 337);
+            this.textBox_codproducto.Location = new System.Drawing.Point(181, 364);
             this.textBox_codproducto.MaxLength = 100;
             this.textBox_codproducto.Name = "textBox_codproducto";
             this.textBox_codproducto.Size = new System.Drawing.Size(233, 20);
@@ -140,7 +141,7 @@
             // 
             // textBox_codventa
             // 
-            this.textBox_codventa.Location = new System.Drawing.Point(12, 337);
+            this.textBox_codventa.Location = new System.Drawing.Point(10, 364);
             this.textBox_codventa.MaxLength = 100;
             this.textBox_codventa.Name = "textBox_codventa";
             this.textBox_codventa.Size = new System.Drawing.Size(155, 20);
@@ -151,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 311);
+            this.label2.Location = new System.Drawing.Point(178, 338);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 13;
@@ -160,7 +161,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 311);
+            this.label1.Location = new System.Drawing.Point(7, 338);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 24;
@@ -169,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(650, 311);
+            this.label4.Location = new System.Drawing.Point(648, 338);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 13);
             this.label4.TabIndex = 26;
@@ -177,7 +178,7 @@
             // 
             // textBox_nombreproducto
             // 
-            this.textBox_nombreproducto.Location = new System.Drawing.Point(653, 337);
+            this.textBox_nombreproducto.Location = new System.Drawing.Point(651, 364);
             this.textBox_nombreproducto.MaxLength = 50;
             this.textBox_nombreproducto.Name = "textBox_nombreproducto";
             this.textBox_nombreproducto.Size = new System.Drawing.Size(192, 20);
@@ -187,7 +188,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(852, 311);
+            this.label5.Location = new System.Drawing.Point(850, 338);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 28;
@@ -195,7 +196,7 @@
             // 
             // textBox_codcliente
             // 
-            this.textBox_codcliente.Location = new System.Drawing.Point(855, 337);
+            this.textBox_codcliente.Location = new System.Drawing.Point(853, 364);
             this.textBox_codcliente.MaxLength = 100;
             this.textBox_codcliente.Name = "textBox_codcliente";
             this.textBox_codcliente.Size = new System.Drawing.Size(115, 20);
@@ -205,7 +206,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1001, 311);
+            this.label6.Location = new System.Drawing.Point(999, 338);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 30;
@@ -213,12 +214,23 @@
             // 
             // textBox_precioventa
             // 
-            this.textBox_precioventa.Location = new System.Drawing.Point(1004, 337);
+            this.textBox_precioventa.Location = new System.Drawing.Point(1002, 364);
             this.textBox_precioventa.MaxLength = 100;
             this.textBox_precioventa.Name = "textBox_precioventa";
             this.textBox_precioventa.Size = new System.Drawing.Size(138, 20);
             this.textBox_precioventa.TabIndex = 29;
             this.textBox_precioventa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_precioventa_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(110, 15);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "LISTA DE VENTA";
             // 
             // Venta
             // 
@@ -226,6 +238,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1166, 421);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox_precioventa);
             this.Controls.Add(this.label5);
@@ -249,6 +262,7 @@
             this.Name = "Venta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venta";
+            this.Load += new System.EventHandler(this.Venta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridventa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -275,5 +289,6 @@
         private System.Windows.Forms.TextBox textBox_codcliente;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox_precioventa;
+        private System.Windows.Forms.Label label7;
     }
 }
