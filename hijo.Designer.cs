@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.gc_cliente = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -36,18 +37,32 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Bt_ListCliente = new System.Windows.Forms.Button();
             this.Bt_Agregar = new System.Windows.Forms.Button();
-            this.gc_cliente = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.apellidomensaje = new System.Windows.Forms.Label();
+            this.codigomensaje = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gc_cliente)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gc_cliente
+            // 
+            this.gc_cliente.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.gc_cliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gc_cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gc_cliente.Location = new System.Drawing.Point(26, 28);
+            this.gc_cliente.Name = "gc_cliente";
+            this.gc_cliente.Size = new System.Drawing.Size(342, 296);
+            this.gc_cliente.TabIndex = 10;
+            this.gc_cliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gc_cliente_CellDoubleClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label1.Location = new System.Drawing.Point(29, 311);
+            this.label1.Location = new System.Drawing.Point(23, 327);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 0;
@@ -57,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(459, 311);
+            this.label2.Location = new System.Drawing.Point(453, 327);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 1;
@@ -65,7 +80,8 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(32, 337);
+            this.textBox1.Location = new System.Drawing.Point(26, 353);
+            this.textBox1.MaxLength = 1000;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(292, 20);
             this.textBox1.TabIndex = 2;
@@ -74,15 +90,18 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(462, 337);
+            this.textBox2.Location = new System.Drawing.Point(456, 353);
+            this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(292, 20);
             this.textBox2.TabIndex = 3;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(877, 337);
+            this.textBox3.Location = new System.Drawing.Point(871, 353);
+            this.textBox3.MaxLength = 50;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(292, 20);
             this.textBox3.TabIndex = 4;
@@ -92,7 +111,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(874, 311);
+            this.label3.Location = new System.Drawing.Point(868, 327);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 5;
@@ -117,18 +136,6 @@
             this.Bt_Agregar.Text = "AGREGAR ";
             this.Bt_Agregar.UseVisualStyleBackColor = true;
             this.Bt_Agregar.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // gc_cliente
-            // 
-            this.gc_cliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gc_cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gc_cliente.Location = new System.Drawing.Point(32, 12);
-            this.gc_cliente.Name = "gc_cliente";
-            this.gc_cliente.Size = new System.Drawing.Size(340, 296);
-            this.gc_cliente.TabIndex = 10;
-            this.gc_cliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gc_cliente_CellDoubleClick);
             // 
             // button3
             // 
@@ -160,11 +167,51 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(453, 376);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // apellidomensaje
+            // 
+            this.apellidomensaje.AutoSize = true;
+            this.apellidomensaje.Location = new System.Drawing.Point(868, 376);
+            this.apellidomensaje.Name = "apellidomensaje";
+            this.apellidomensaje.Size = new System.Drawing.Size(0, 13);
+            this.apellidomensaje.TabIndex = 14;
+            // 
+            // codigomensaje
+            // 
+            this.codigomensaje.AutoSize = true;
+            this.codigomensaje.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.codigomensaje.Location = new System.Drawing.Point(29, 360);
+            this.codigomensaje.Name = "codigomensaje";
+            this.codigomensaje.Size = new System.Drawing.Size(0, 13);
+            this.codigomensaje.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(29, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "LISTA DE CLIENTES";
+            // 
             // hijo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 425);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1196, 425);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.codigomensaje);
+            this.Controls.Add(this.apellidomensaje);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.gc_cliente);
@@ -177,7 +224,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.ForeColor = System.Drawing.Color.Coral;
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "hijo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CLIENTE";
@@ -199,9 +247,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Bt_ListCliente;
         private System.Windows.Forms.Button Bt_Agregar;
-        private System.Windows.Forms.DataGridView gc_cliente;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label apellidomensaje;
+        private System.Windows.Forms.Label codigomensaje;
+        private System.Windows.Forms.DataGridView gc_cliente;
+        private System.Windows.Forms.Label label5;
     }
 }

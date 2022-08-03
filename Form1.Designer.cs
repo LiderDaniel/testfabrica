@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btn_Hijo = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.button1 = new System.Windows.Forms.Button();
@@ -38,44 +39,34 @@
             // 
             this.btn_Hijo.BackColor = System.Drawing.Color.Transparent;
             this.btn_Hijo.ForeColor = System.Drawing.Color.Black;
-            this.btn_Hijo.Location = new System.Drawing.Point(54, 76);
+            resources.ApplyResources(this.btn_Hijo, "btn_Hijo");
             this.btn_Hijo.Name = "btn_Hijo";
-            this.btn_Hijo.Size = new System.Drawing.Size(59, 46);
-            this.btn_Hijo.TabIndex = 0;
-            this.btn_Hijo.Text = "Cliente";
             this.btn_Hijo.UseVisualStyleBackColor = false;
             this.btn_Hijo.Click += new System.EventHandler(this.btn_Hijo_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(130, 76);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 46);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Productos";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(225, 76);
+            resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(70, 46);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "VENTA";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 158);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Hijo);
             this.Name = "Form1";
-            this.Text = "Project Base CLT";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);

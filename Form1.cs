@@ -168,7 +168,7 @@ namespace f2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form producto = new Producto(); // PONEMOS EL FORM Y LUEGO AGREGAMOS EL UN NOMBRE LUEGO NEW MAS EL NOMBRE DEL FORMULARIO
+            Form producto = new Producto(capaNegocios); // PONEMOS EL FORM Y LUEGO AGREGAMOS EL UN NOMBRE LUEGO NEW MAS EL NOMBRE DEL FORMULARIO
             producto.ShowDialog();
 
 
@@ -181,7 +181,7 @@ namespace f2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form ventas = new Venta();
+            Form ventas = new Venta(capaNegocios);
             ventas.ShowDialog();        
         }
     }

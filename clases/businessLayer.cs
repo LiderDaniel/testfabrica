@@ -29,7 +29,7 @@ namespace f2
         #region interno
         //COMENTADO AL AGREGAR LA NUEVA FORMA DE CONECTAR EN LA REGION STANDAR
         //public businessLayer() { }
-        public void agregarConexion(int posicion,string i_ticketSb, string i_idInstanacia)
+        public void agregarConexion(int posicion, string i_ticketSb, string i_idInstanacia)
         {
             ticketSb[posicion] = i_ticketSb;
             idInstanciaSb[posicion] = i_idInstanacia;
@@ -47,7 +47,7 @@ namespace f2
         {
             noise[posicion] = DateTime.Now.Ticks.ToString();
             ticketResult[posicion] = utiles.GetMD5(ticketSb[posicion] + noise[posicion]);
-        }        
+        }
         /// <summary>
         /// devuelve ticket de conexion actual al SB
         /// </summary>
@@ -82,7 +82,7 @@ namespace f2
         /// </summary>
         /// <param name="posicion"></param>
         /// <returns></returns>
-       
+
 
         private string laInstanacia(int posicion)
         {
@@ -251,7 +251,7 @@ namespace f2
 
 
 
-        public string SP_INSERT_CLIENTES(string PI_NOMBRE,  string PI_APELLIDO)
+        public string SP_INSERT_CLIENTES(string PI_NOMBRE, string PI_APELLIDO)
         {
             /* --
             --
@@ -324,14 +324,14 @@ namespace f2
         public string SP_UPDATE_CLIENTES(string PI_NOMBRE, string PI_APELLIDO, int PI_CODIGO_CLIENTE)
         {
 
-         
+
 
             string datos = "";
             OracleConnection cone = new OracleConnection(cadenaDeConeccion);
             OracleCommand coman = new OracleCommand("USER_ORA.PKG_ABM.SP_UPDATE_CLIENTES", cone);
             coman.CommandType = CommandType.StoredProcedure;
 
-            
+
             coman.Parameters.Add("PI_NOMBRE", PI_NOMBRE);
             coman.Parameters.Add("PI_APELLIDO", PI_APELLIDO);
             coman.Parameters.Add("PI_CODIGO_CLIENTE", PI_CODIGO_CLIENTE);
@@ -353,7 +353,293 @@ namespace f2
         }
 
 
+        //PRODCUTO
+
+        public DataTable SP_LISTAR_PRODUCTO()
+        {
+            /* --
+            --
+            -- procedimiento para consultar los clientes de CLT
+            --
+
+             -- Call the procedure
+             pkg_ABM.SP_LISTAR_CLIENTES(PO_CURSOR => :PO_CURSOR); */
+
+            System.Data.DataTable PRODUCTO = new DataTable();
+            OracleConnection cone = new OracleConnection(this.cadenaCone);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_PRODUCTO.SP_LISTAR_PRODUCTO", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+            coman.Parameters.Add("PO_CURSOR", OracleDbType.RefCursor);
+            coman.Parameters["PO_CURSOR"].Direction = ParameterDirection.Output;
+            OracleDataAdapter adap = new OracleDataAdapter(coman);
+            try
+            {
+                coman.Connection.Open();
+                adap.Fill(PRODUCTO);
+                coman.Connection.Close();
+                coman.Connection.Dispose();
+            }
+            catch
+            {
+                throw;
+
+            }
+            return PRODUCTO;
+
+        }
+
+
+
+        public string SP_INSERT_PRODUCTO(string PI_PRODUCTO, double PI_PRECIO,int PI_CANTIDAD)
+        {
+            /* --
+            --
+            -- procedimiento para insertar los clientes de CLT
+            --
+
+                clt.pkg_abm_clientes_contabilidad.sp_inserta_clientes_clt(pi_descripcion => :pi_descripcion,
+                                                            pi_ruc => :pi_ruc,
+                                                            pi_direccion => :pi_direccion,
+                                                            pi_telefono => :pi_telefono,
+                                                            po_retorno => :po_retorno); */
+            string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_PRODUCTO.SP_INSERT_PRODUCTO", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+            coman.Parameters.Add("PI_PRODUCTO", PI_PRODUCTO.Trim());
+            coman.Parameters.Add("PI_PRECIO", PI_PRECIO);
+            coman.Parameters.Add("PI_CANTIDAD", PI_CANTIDAD);
+
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            return datos;
+
+        }
+
+
+        public void SP_DELETE_PRODUCTO(int pi_codigo)
+        {
+
+            //string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_PRODUCTO.SP_DELETE_PRODUCTO", cone);
+            coman.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            coman.Parameters.Add("CODIGO_PRODUCTO", OracleDbType.Int32).Value = Convert.ToInt32(pi_codigo);
+
+            //coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            //coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                //datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            //return datos;
+
+        }
+
+        public string SP_UPDATE_PRODUCTO(string PI_PRODUCTO, float PI_PRECIO, int PI_CANTIDAD, int PI_CODIGO_PRODCUTO)
+        {
+
+
+
+            string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_PRODUCTO.SP_UPDATE_PRODUCTO", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+
+            coman.Parameters.Add("PI_PRODUCTO", PI_PRODUCTO);
+            coman.Parameters.Add("PI_PRECIO", PI_PRECIO);
+            coman.Parameters.Add("PI_CANTIDAD", PI_CANTIDAD);
+            coman.Parameters.Add("PI_CODIGO_PRODCUTO", PI_CODIGO_PRODCUTO);
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                //datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            MessageBox.Show("Se a Actualizado los datos");
+            return datos;
+
+        }
+
+
+        //VENTA
+
+
+        public DataTable SP_LISTAR_VENTA()
+        {
+            /* --
+            --
+            -- procedimiento para consultar los clientes de CLT
+            --
+
+             -- Call the procedure
+             pkg_ABM.SP_LISTAR_CLIENTES(PO_CURSOR => :PO_CURSOR); */
+
+            System.Data.DataTable PRODUCTO = new DataTable();
+            OracleConnection cone = new OracleConnection(this.cadenaCone);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_VENTA.SP_LISTAR_VENTA", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+            coman.Parameters.Add("PO_CURSOR", OracleDbType.RefCursor);
+            coman.Parameters["PO_CURSOR"].Direction = ParameterDirection.Output;
+            OracleDataAdapter adap = new OracleDataAdapter(coman);
+            try
+            {
+                coman.Connection.Open();
+                adap.Fill(PRODUCTO);
+                coman.Connection.Close();
+                coman.Connection.Dispose();
+            }
+            catch
+            {
+                throw;
+
+            }
+            return PRODUCTO;
+
+        }
+
+
+
+        //GUARDAR EN LA TABLA
+        public string SP_INSERT_VENTA(int PI_COD_PRODUCTO, int PI_CANTIDAD, string PI_NOMBRE_PRODUCTO,int PI_COD_CLIENTE)
+        {
+            /* --
+            --
+            -- procedimiento para insertar los clientes de CLT
+            --
+
+                clt.pkg_abm_clientes_contabilidad.sp_inserta_clientes_clt(pi_descripcion => :pi_descripcion,
+                                                            pi_ruc => :pi_ruc,
+                                                            pi_direccion => :pi_direccion,
+                                                            pi_telefono => :pi_telefono,
+                                                            po_retorno => :po_retorno); */
+            string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_VENTA.SP_INSERT_VENTA", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+            coman.Parameters.Add("PI_COD_PRODUCTO ", PI_COD_PRODUCTO);
+            coman.Parameters.Add("PI_CANTIDAD ", PI_CANTIDAD);
+            coman.Parameters.Add("PI_NOMBRE_PRODUCTO ", PI_NOMBRE_PRODUCTO);
+            coman.Parameters.Add(",PI_COD_CLIENTE  ",  PI_COD_CLIENTE);
+            
+           
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            return datos;
+
+        }
+
+
+        //DELETE VENTA
+        public void SP_DELETE_VENTA(int COD_VENTA)
+        {
+
+            //string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_VENTA.SP_DELETE_VENTA", cone);
+            coman.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            coman.Parameters.Add("COD_VENTA", OracleDbType.Int32).Value = Convert.ToInt32(COD_VENTA);
+
+            //coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            //coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                //datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            //return datos;
+
+        }
+
+        //UPDATE
+        public string SP_UPDATE_VENTA(int PI_COD_PRODUCTO, float PI_CANTIDAD, string PI_NOMBRE_PRODUCTO, int PI_COD_CLIENTE, int PI_CODIGO_VENTA, int V_PRECIO)
+        {
+
+
+
+            string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_VENTA.SP_UPDATE_VENTA", cone);
+            coman.CommandType = CommandType.StoredProcedure;
+
+
+            coman.Parameters.Add("PI_COD_PRODUCTO ", PI_COD_PRODUCTO);
+            coman.Parameters.Add("PI_CANTIDAD ", PI_CANTIDAD);
+            coman.Parameters.Add("PI_NOMBRE_PRODUCTO ", PI_NOMBRE_PRODUCTO);
+            coman.Parameters.Add(",PI_COD_CLIENTE  ", PI_COD_CLIENTE);
+            coman.Parameters.Add("PI_CODIGO_VENTA", PI_CODIGO_VENTA);
+            coman.Parameters.Add("V_PRECIO", V_PRECIO);
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                //datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            MessageBox.Show("Se a Actualizado los datos");
+            return datos;
+
+        }
     }
 
-    }
+}
 

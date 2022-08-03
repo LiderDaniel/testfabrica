@@ -79,45 +79,175 @@ namespace f2
 
         private void button2_Click(object sender, EventArgs e) //BOTON GUARDAR
         {
+            if (textBox2.Text.Equals(""))
+            {
 
+                MessageBox.Show("Nose Cargo el Campo Nombre ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             string Nombre = textBox2.Text;
 
+            if (textBox3.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Apellido ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
             string Apellido = textBox3.Text;
 
-            //insert  ala tabla
 
-            var datos = capaNegociosHijo.SP_INSERT_CLIENTES(Nombre, Apellido);
+            if (textBox3.Text.Length >= 50)
+            {
+                MessageBox.Show("El Apellido debe de Tener Menos de 50 Carateres");
+                return;
+            }
+
+            if (textBox2.Text.Length >= 50)
+            {
+                MessageBox.Show("El Nombre debe de Tener Menos de 50 Carateres");
+
+                return;
+            }
+
+                if (String.IsNullOrEmpty(textBox2.Text)  )
+            {
+                label4.Text = ("Nose Cargo el campo Nombre");
+
+            }
+            else
+                if (string.IsNullOrEmpty(textBox3.Text))
+            {
+                apellidomensaje.Text = ("Nose Cargo el campo Apellido");
+            }
+
+            else
+
+            {
+                //insert  ala tabla
+
+                label4.Text = (" ");
+                apellidomensaje.Text = (" ");
+
+                var datos = capaNegociosHijo.SP_INSERT_CLIENTES(Nombre, Apellido);
+                MessageBox.Show("Los Datos Ingresados Fueron Guardados Correctamente");
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text.Equals(""))
+            {
 
+                MessageBox.Show("Nose Cargo el Campo Codigo Cliente ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                return;
+            }
+            if (String.IsNullOrEmpty(textBox1.Text))
+            {
+                codigomensaje.Text = ("Nose Cargo el Campo Codigo");
 
-            capaNegociosHijo.SP_DELETE_CLIENTES(Convert.ToDouble(textBox1.Text));
+            }
+            else
+            {
+                codigomensaje.Text = (" ");
 
+                capaNegociosHijo.SP_DELETE_CLIENTES(Convert.ToDouble(textBox1.Text));
+                MessageBox.Show("El cliente con numero de id : " + textBox1.Text + " Fue Eliminado ");
+            }
 
         }
 
        
         private void button4_Click(object sender, EventArgs e)//METODO PARA REALIZAR EL UPDATE
         {
-          
 
 
+            if (textBox2.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Nombre ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
             string PI_NOMBRE = textBox2.Text;
 
+
+
+            if (textBox3.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Nombre ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
             string PI_APELLIDO = textBox3.Text;
+
+
+
+            if (textBox1.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Codigo Cliente ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             int PI_CODIGO_CLIENTE = Convert.ToInt32(textBox1.Text);
 
-            capaNegociosHijo.SP_UPDATE_CLIENTES(PI_NOMBRE, PI_APELLIDO,PI_CODIGO_CLIENTE);
+            if(textBox3.Text.Length >= 50)
+            {
+                MessageBox.Show("El Apellido debe de Tener Menos de 50 Carateres");
+                return;
+            }
+
+            if (textBox2.Text.Length >= 50)
+            {
+                MessageBox.Show("El Nombre debe de Tener Menos de 50 Carateres");
+
+                return;
+            }
+                if (String.IsNullOrEmpty(textBox2.Text))
+            {
+               
+                label4.Text = ("Debe de ingresar el nombre para editar ");
+
+            }
+
+              if (string.IsNullOrEmpty(textBox3.Text))
+            {
+
+                apellidomensaje.Text = ("Debe de ingresar el apellido para editar");
+
+            }
+            else
+
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+
+                codigomensaje.Text = ("Debe Ingresar un Codigo para  Poder  Editar");
+            }
+
+            else
+
+            {
+                //insert  ala tabla
+               
+                    label4.Text = (" ");
+                    apellidomensaje.Text = (" ");
+
+                    capaNegociosHijo.SP_UPDATE_CLIENTES(PI_NOMBRE, PI_APELLIDO, PI_CODIGO_CLIENTE);
+
+                    MessageBox.Show("La Edicion fue Realizada el Cliente con codigo : " + textBox1.Text + " con Exito ");
 
 
+            
 
-
-
+            }
 
         }
         ErrorProvider errorP = new ErrorProvider();
@@ -162,6 +292,16 @@ namespace f2
             else
 
                 errorP.Clear();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
