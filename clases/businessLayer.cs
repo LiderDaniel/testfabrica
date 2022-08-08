@@ -291,10 +291,10 @@ namespace f2
 
 
 
-        public void SP_DELETE_CLIENTES(double pi_codigo)
+        public string SP_DELETE_CLIENTES(double pi_codigo)
         {
 
-            //string datos = "";
+            string datos = "";
             OracleConnection cone = new OracleConnection(cadenaDeConeccion);
             OracleCommand coman = new OracleCommand("USER_ORA.PKG_ABM.SP_DELETE_CLIENTES", cone);
             coman.CommandType = System.Data.CommandType.StoredProcedure;
@@ -302,21 +302,21 @@ namespace f2
 
             coman.Parameters.Add("CODIGO_CLIENTE", OracleDbType.Int32).Value = Convert.ToInt32(pi_codigo);
 
-            //coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
-            //coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
             try
             {
                 cone.Open();
                 coman.ExecuteNonQuery();
                 cone.Close();
-                //datos = coman.Parameters["po_retorno"].Value.ToString();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
             }
             catch
             {
                 throw;
 
             }
-            //return datos;
+            return datos;
 
         }
 
@@ -335,12 +335,16 @@ namespace f2
             coman.Parameters.Add("PI_NOMBRE", PI_NOMBRE);
             coman.Parameters.Add("PI_APELLIDO", PI_APELLIDO);
             coman.Parameters.Add("PI_CODIGO_CLIENTE", PI_CODIGO_CLIENTE);
+
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+
             try
             {
                 cone.Open();
                 coman.ExecuteNonQuery();
                 cone.Close();
-                //datos = coman.Parameters["po_retorno"].Value.ToString();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
             }
             catch
             {
@@ -431,10 +435,10 @@ namespace f2
         }
 
 
-        public void SP_DELETE_PRODUCTO(int pi_codigo)
+        public  string  SP_DELETE_PRODUCTO(int pi_codigo)
         {
 
-            //string datos = "";
+            string datos = "";
             OracleConnection cone = new OracleConnection(cadenaDeConeccion);
             OracleCommand coman = new OracleCommand("USER_ORA.PKG_PRODUCTO.SP_DELETE_PRODUCTO", cone);
             coman.CommandType = System.Data.CommandType.StoredProcedure;
@@ -442,21 +446,24 @@ namespace f2
 
             coman.Parameters.Add("CODIGO_PRODUCTO", OracleDbType.Int32).Value = Convert.ToInt32(pi_codigo);
 
-            //coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
-            //coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+
+
+
             try
             {
                 cone.Open();
                 coman.ExecuteNonQuery();
                 cone.Close();
-                //datos = coman.Parameters["po_retorno"].Value.ToString();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
             }
             catch
             {
                 throw;
 
             }
-            //return datos;
+            return datos;
 
         }
 
@@ -475,12 +482,16 @@ namespace f2
             coman.Parameters.Add("PI_PRECIO", PI_PRECIO);
             coman.Parameters.Add("PI_CANTIDAD", PI_CANTIDAD);
             coman.Parameters.Add("PI_CODIGO_PRODCUTO", PI_CODIGO_PRODCUTO);
+
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+
             try
             {
                 cone.Open();
                 coman.ExecuteNonQuery();
                 cone.Close();
-                //datos = coman.Parameters["po_retorno"].Value.ToString();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
             }
             catch
             {
@@ -576,10 +587,10 @@ namespace f2
 
 
         //DELETE VENTA
-        public void SP_DELETE_VENTA(int COD_VENTA)
+        public string SP_DELETE_VENTA(int COD_VENTA)
         {
 
-            //string datos = "";
+            string datos = "";
             OracleConnection cone = new OracleConnection(cadenaDeConeccion);
             OracleCommand coman = new OracleCommand("USER_ORA.PKG_VENTA.SP_DELETE_VENTA", cone);
             coman.CommandType = System.Data.CommandType.StoredProcedure;
@@ -587,21 +598,21 @@ namespace f2
 
             coman.Parameters.Add("COD_VENTA", OracleDbType.Int32).Value = Convert.ToInt32(COD_VENTA);
 
-            //coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
-            //coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
             try
             {
                 cone.Open();
                 coman.ExecuteNonQuery();
                 cone.Close();
-                //datos = coman.Parameters["po_retorno"].Value.ToString();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
             }
             catch
             {
                 throw;
 
             }
-            //return datos;
+            return datos;
 
         }
 
@@ -623,12 +634,16 @@ namespace f2
             coman.Parameters.Add(",PI_COD_CLIENTE  ", PI_COD_CLIENTE);
             coman.Parameters.Add("PI_CODIGO_VENTA", PI_CODIGO_VENTA);
             coman.Parameters.Add("V_PRECIO", V_PRECIO);
+
+            coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+
             try
             {
                 cone.Open();
                 coman.ExecuteNonQuery();
                 cone.Close();
-                //datos = coman.Parameters["po_retorno"].Value.ToString();
+                datos = coman.Parameters["po_retorno"].Value.ToString();
             }
             catch
             {

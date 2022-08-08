@@ -35,6 +35,7 @@ namespace f2
         {
             InitializeComponent();
             this.capaNegociosHijo = capaNegociosPadre;
+            cargatabla();
         }
         public void cargatabla()
         {
@@ -115,10 +116,6 @@ namespace f2
 
             
            
-                //insert  ala tabla
-
-                label4.Text = (" ");
-                apellidomensaje.Text = (" ");
 
                 var datos = capaNegociosHijo.SP_INSERT_CLIENTES(Nombre, Apellido);
                 MessageBox.Show("Los Datos Ingresados Fueron Guardados Correctamente");
@@ -138,11 +135,21 @@ namespace f2
             }
            
                 
+            string mensaje  = capaNegociosHijo.SP_DELETE_CLIENTES(Convert.ToDouble(textBox1.Text));
 
-                capaNegociosHijo.SP_DELETE_CLIENTES(Convert.ToDouble(textBox1.Text));
+
+            if (mensaje.Equals("OK"))
+            {
                 MessageBox.Show("El cliente con numero de id : " + textBox1.Text + " Fue Eliminado ");
                 cargatabla();
                 limpiar();
+
+
+            }
+            else
+            {
+                MessageBox.Show(mensaje);
+            }
             
 
         }
@@ -166,7 +173,7 @@ namespace f2
             if (textBox3.Text.Equals(""))
             {
 
-                MessageBox.Show("Nose Cargo el Campo Nombre ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nose Cargo el Campo Apellido ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
@@ -184,34 +191,32 @@ namespace f2
 
             int PI_CODIGO_CLIENTE = Convert.ToInt32(textBox1.Text);
 
-            if(textBox3.Text.Length >= 50)
-            {
-                MessageBox.Show("El Apellido debe de Tener Menos de 50 Carateres");
-                return;
-            }
+            //if(textBox3.Text.Length >= 50)
+            //{
+            //    MessageBox.Show("El Apellido debe de Tener Menos de 50 Carateres");
+            //    return;
+            //}
 
-            if (textBox2.Text.Length >= 50)
-            {
-                MessageBox.Show("El Nombre debe de Tener Menos de 50 Carateres");
+            //if (textBox2.Text.Length >= 50)
+            //{
+            //    MessageBox.Show("El Nombre debe de Tener Menos de 50 Carateres");
 
-                return;
-            }
+            //    return;
+            //}
             
+            string mensaje = capaNegociosHijo.SP_UPDATE_CLIENTES(PI_NOMBRE, PI_APELLIDO, PI_CODIGO_CLIENTE);
 
-          
-                //insert  ala tabla
-               
-                    label4.Text = (" ");
-                    apellidomensaje.Text = (" ");
-
-                    capaNegociosHijo.SP_UPDATE_CLIENTES(PI_NOMBRE, PI_APELLIDO, PI_CODIGO_CLIENTE);
-
+            if (mensaje.Equals("OK")) { 
                     MessageBox.Show("La Edicion fue Realizada el Cliente con codigo : " + textBox1.Text + " con Exito ");
                 cargatabla();
                 limpiar();
-            
 
-            
+            }
+            else
+            {
+                MessageBox.Show(mensaje);
+            }
+
 
         }
         ErrorProvider errorP = new ErrorProvider();
@@ -297,6 +302,11 @@ namespace f2
                 errorP.SetError(textBox3, "Solo se acepta letras");
             else
                 errorP.Clear();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

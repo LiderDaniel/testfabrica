@@ -33,10 +33,22 @@ namespace f2
         {
             InitializeComponent();
             this.capaNegociosVenta = capaNegociosPadre;
+            listarventa();
+            listarcliente();
+            listarproducto();
         }
       
-
-       private void listarventa()
+        public void listarcliente()
+        {
+            gc_cliente.DataSource = null;
+            gc_cliente.DataSource = capaNegociosVenta.SP_LISTAR_CLIENTES();
+        }
+        private void listarproducto()
+        {
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = capaNegociosVenta.SP_LISTAR_PRODUCTO();
+        }
+        private void listarventa()
         {
             datagridventa.DataSource = null;
             datagridventa.DataSource = capaNegociosVenta.SP_LISTAR_VENTA();
@@ -78,7 +90,7 @@ namespace f2
             int PI_CANTIDAD = Convert.ToInt32(textBox_cantidad.Text);
 
 
-            if (textBox_cantidad.Text.Equals(""))
+            if (textBox_nombreproducto.Text.Equals(""))
             {
 
             
@@ -87,7 +99,7 @@ namespace f2
             }
 
             string PI_NOMBRE_PRODUCTO = textBox_nombreproducto.Text;
-            if (textBox_cantidad.Text.Equals(""))
+            if (textBox_codcliente.Text.Equals(""))
             {
 
                
@@ -123,11 +135,19 @@ namespace f2
                 return;
 
             }
-            capaNegociosVenta.SP_DELETE_VENTA(Convert.ToInt32(textBox_codventa.Text));
+            string mensaje = capaNegociosVenta.SP_DELETE_VENTA(Convert.ToInt32(textBox_codventa.Text));
 
-            MessageBox.Show(" La Venta con Codigo : " + textBox_codventa.Text + " Fue Eliminada");
-            limpiar();
-            listarventa();
+            if (mensaje.Equals("OK"))
+
+            {
+                MessageBox.Show(" La Venta con Codigo : " + textBox_codventa.Text + " Fue Eliminada");
+                limpiar();
+                listarventa();
+            }
+            else
+            {
+                MessageBox.Show(mensaje);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -194,21 +214,29 @@ namespace f2
             }
 
 
-            int PI_CODIGO_VENTA = Convert.ToInt32(textBox_codventa.Text);
+           int PI_CODIGO_VENTA = Convert.ToInt32(textBox_codventa.Text);
            if (textBox_precioventa.Text.Equals(""))
 
             {
                 MessageBox.Show("Nose Cargo el Campo Precio Venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-         }
+            }
 
             int V_PRECIO = Convert.ToInt32(textBox_precioventa.Text);
 
 
-            capaNegociosVenta.SP_UPDATE_VENTA(PI_COD_PRODUCTO, PI_CANTIDAD, PI_NOMBRE_PRODUCTO, PI_COD_CLIENTE, PI_CODIGO_VENTA, V_PRECIO);
-            MessageBox.Show("La Edicion fue Realizada el Cliente con codigo: " + textBox_codventa.Text + " con Exito ");
-            limpiar();
-            listarventa();
+
+            string mensaje = capaNegociosVenta.SP_UPDATE_VENTA(PI_COD_PRODUCTO, PI_CANTIDAD, PI_NOMBRE_PRODUCTO, PI_COD_CLIENTE, PI_CODIGO_VENTA, V_PRECIO);
+            if (mensaje.Equals("OK"))
+            {
+                MessageBox.Show("La Edicion fue Realizada el Cliente con codigo: " + textBox_codventa.Text + " con Exito ");
+                limpiar();
+                listarventa();
+            }
+            else
+            {
+                MessageBox.Show(mensaje);
+            }
         }
 
         ErrorProvider errorP = new ErrorProvider();
@@ -277,6 +305,7 @@ namespace f2
                 errorP.SetError(textBox_precioventa, "Solo se acepta numeros");
             else
                 errorP.Clear();
+
         }
 
         private void Venta_Load(object sender, EventArgs e)
@@ -293,6 +322,31 @@ namespace f2
             textBox_precioventa.Clear();
             textBox_codcliente.Clear();
             textBox_nombreproducto.Clear();
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gc_cliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
 
         }
     }

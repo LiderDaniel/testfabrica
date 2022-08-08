@@ -48,7 +48,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox_precioventa = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.gc_cliente = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridventa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_cliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -76,7 +82,7 @@
             this.datagridventa.BackgroundColor = System.Drawing.SystemColors.Info;
             this.datagridventa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridventa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridventa.Location = new System.Drawing.Point(10, 39);
+            this.datagridventa.Location = new System.Drawing.Point(272, 39);
             this.datagridventa.Name = "datagridventa";
             this.datagridventa.Size = new System.Drawing.Size(642, 296);
             this.datagridventa.TabIndex = 21;
@@ -226,18 +232,69 @@
             this.label7.AutoSize = true;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 9);
+            this.label7.Location = new System.Drawing.Point(274, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 15);
             this.label7.TabIndex = 38;
             this.label7.Text = "LISTA DE VENTA";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // gc_cliente
+            // 
+            this.gc_cliente.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.gc_cliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gc_cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gc_cliente.Location = new System.Drawing.Point(181, 455);
+            this.gc_cliente.Name = "gc_cliente";
+            this.gc_cliente.Size = new System.Drawing.Size(342, 296);
+            this.gc_cliente.TabIndex = 39;
+            this.gc_cliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gc_cliente_CellContentClick);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(173, 437);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(108, 15);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "LISTA CLIENTES";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(574, 455);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(442, 296);
+            this.dataGridView2.TabIndex = 41;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(574, 437);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(117, 15);
+            this.label9.TabIndex = 42;
+            this.label9.Text = "LISTA PRODUCTO";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1166, 421);
+            this.ClientSize = new System.Drawing.Size(1144, 773);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.gc_cliente);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox_precioventa);
@@ -264,6 +321,8 @@
             this.Text = "Venta";
             this.Load += new System.EventHandler(this.Venta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridventa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_cliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,5 +349,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox_precioventa;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView gc_cliente;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label9;
     }
 }

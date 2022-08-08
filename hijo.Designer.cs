@@ -202,16 +202,16 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(26, -1);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 15);
+            this.label7.Size = new System.Drawing.Size(121, 15);
             this.label7.TabIndex = 39;
-            this.label7.Text = "LISTA DE VENTA";
+            this.label7.Text = "LISTA DE CLIENTE";
             // 
             // hijo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1196, 425);
+            this.ClientSize = new System.Drawing.Size(1196, 541);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.codigomensaje);
             this.Controls.Add(this.apellidomensaje);

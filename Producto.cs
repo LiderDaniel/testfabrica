@@ -34,6 +34,7 @@ namespace f2
         {
             InitializeComponent();
             this.capaNegociosProducto = capaNegociosPadre;
+             listarproducto();
         }
         //public Producto()
         //{
@@ -57,20 +58,32 @@ namespace f2
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
 
 
-            if (String.IsNullOrEmpty(textBox1.Text))
+
+            if (textBox1.Text.Equals(""))
             {
-                codproducto.Text = ("Nose Cargo el Campo Codigo");
 
+                MessageBox.Show("Nose Cargo el Campo Codigo ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+
+
+
+            string mensaje = capaNegociosProducto.SP_DELETE_PRODUCTO(Convert.ToInt32(textBox1.Text));
+
+            if( mensaje.Equals("OK"))
+            {
+
+           
+            //capaNegociosProducto.SP_DELETE_PRODUCTO(Convert.ToInt32(textBox1.Text));
+                MessageBox.Show("El cliente con numero de id : " + textBox1.Text + " Fue Eliminado ");
             }
             else
             {
-                codproducto.Text = (" ");
-
-                capaNegociosProducto.SP_DELETE_PRODUCTO(Convert.ToInt32(textBox1.Text));
-                MessageBox.Show("El cliente con numero de id : " + textBox1.Text + " Fue Eliminado ");
+                MessageBox.Show(mensaje);
             }
         }
 
@@ -101,11 +114,20 @@ namespace f2
 
         private void BT_AGREGAR_Click(object sender, EventArgs e)
         {
-          //  int CODIGO_PRODUCTO = Convert.ToInt32(texbox_nombre.Text);
+            //  int CODIGO_PRODUCTO = Convert.ToInt32(texbox_nombre.Text);
+
+
+            if (texbox_nombre.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Nombre Producto ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             string PI_PRODUCTO = texbox_nombre.Text;
 
-            if (textBox_Precio.Text.Equals(""))
+            if (textBox_Precio.Text.Equals("0"))
             {
 
                 MessageBox.Show("Nose Cargo el Campo Precio ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -114,7 +136,7 @@ namespace f2
             }
             double PI_PRECIO = Convert.ToDouble(textBox_Precio.Text);
 
-            if (textBox4_Cantidad.Text.Equals(""))
+            if (textBox4_Cantidad.Text.Equals("0"))
             {
 
                 MessageBox.Show("Nose Cargo el Campo ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -123,54 +145,9 @@ namespace f2
             }
 
             int PI_CANTIDAD = Convert.ToInt32(textBox4_Cantidad.Text);
-            if (textBox1.Text.Length > 50)
-            {
-                MessageBox.Show("El Codigo del Producto no Debe de Tener mas de 50 Carateres");
-            }
-
-            if (texbox_nombre.Text.Length > 50)
-            {
-                MessageBox.Show("El Nombre del Producto no Debe de Tener mas de 50 Carateres");
-            }
-            if (textBox_Precio.Text.Length > 50)
-            {
-                MessageBox.Show("El Precio del Producto no Debe de Tener mas de 50 Carateres");
-            }
-            if (textBox4_Cantidad.Text.Length > 50)
-            {
-                MessageBox.Show("La Cantidad del Producto no Debe de Tener mas de 50 Carateres");
-            }
-
-
-
-            if (String.IsNullOrEmpty(texbox_nombre.Text))
-            {
-                nombremensaje.Text = ("Nose Cargo el Campo Producto");
-
-            }
-
-
-            else
-                if (String.IsNullOrEmpty(textBox_Precio.Text))
-            {
-                preciomensaje.Text = ("Nose Cargo el Campo Precio");
-
-            }
-
-            else
-                 if (String.IsNullOrEmpty(textBox4_Cantidad.Text))
-            {
-                cantidadmensaje.Text = ("Nose Cargo el Campo Cantidad");
-
-            }
-            else
-            {
-                nombremensaje.Text = " ";
-
-                preciomensaje.Text = " ";
-
-                cantidadmensaje.Text = " ";
-
+           
+    
+               
 
                 var datos = capaNegociosProducto.SP_INSERT_PRODUCTO(PI_PRODUCTO, PI_PRECIO, PI_CANTIDAD);
 
@@ -179,14 +156,8 @@ namespace f2
 
                 listarproducto();
                 limpiar();
-            }
-
-
-
-
-
-
             
+
 
         }
 
@@ -212,50 +183,62 @@ namespace f2
         private void BT_EDITAR_Click(object sender, EventArgs e)
         {
 
+            if (texbox_nombre.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Nombre ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
             string PI_PRODUCTO = texbox_nombre.Text;
 
+            if (textBox_Precio.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Precio ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
             float PI_PRECIO = float.Parse(textBox_Precio.Text);
 
+            if (textBox4_Cantidad.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Cantidad ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             int PI_CANTIDAD = Convert.ToInt32(textBox4_Cantidad.Text);
+
+
+            if (textBox1.Text.Equals(""))
+            {
+
+                MessageBox.Show("Nose Cargo el Campo Codigo ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             int PI_CODIGO_PRODCUTO = Convert.ToInt32(textBox1.Text);
 
 
-            if (String.IsNullOrEmpty(texbox_nombre.Text))
+      
+            
+               string mensaje = capaNegociosProducto.SP_UPDATE_PRODUCTO(PI_PRODUCTO, PI_PRECIO, PI_CANTIDAD, PI_CODIGO_PRODCUTO);
+
+            if (mensaje.Equals("OK"))
             {
-
-                nombremensaje.Text = ("Debe de ingresar el producto para editar ");
-
-            }
-
-            if (string.IsNullOrEmpty(textBox_Precio.Text))
-            {
-
-                preciomensaje.Text = ("Debe de ingresar el precio para editar");
-
-            }
-            else
-
-          if (string.IsNullOrEmpty(textBox4_Cantidad.Text))
-            {
-
-                textBox4_Cantidad.Text = ("Debe Ingresar un cantidadd para  Poder  Editar");
-            }
-            else
-            {
-                nombremensaje.Text = " ";
-
-                preciomensaje.Text = " ";
-
-                cantidadmensaje.Text = " ";
-
-                capaNegociosProducto.SP_UPDATE_PRODUCTO(PI_PRODUCTO, PI_PRECIO, PI_CANTIDAD, PI_CODIGO_PRODCUTO);
 
                 MessageBox.Show("La Edicion fue Realizada el Cliente con codigo: " + textBox1.Text + " con Exito ");
                 listarproducto();
                 limpiar();
             }
+            else
+            {
+                MessageBox.Show(mensaje);
+            }
+            
 
            
 

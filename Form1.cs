@@ -158,12 +158,13 @@ namespace f2
         {
             hijo nuevoForm = new hijo(capaNegocios);
             nuevoForm.ShowDialog();
+          
 
 
             //cambiamos realizado por mi
 
 
-           // OracleConnection ora = new OracleConnection("DATA SOURCE=  ;PASSWORD=  ;USER ID= ");
+            // OracleConnection ora = new OracleConnection("DATA SOURCE=  ;PASSWORD=  ;USER ID= ");
         }
 
         private void button1_Click(object sender, EventArgs e)
