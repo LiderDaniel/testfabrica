@@ -71,6 +71,7 @@ namespace f2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //
             if (textBox_codproducto.Text.Equals(""))
             {
 
@@ -117,11 +118,23 @@ namespace f2
             //cantidadmensaje.Text = " ";
 
 
-            var datos = capaNegociosVenta.SP_INSERT_VENTA(PI_COD_PRODUCTO, PI_CANTIDAD, PI_NOMBRE_PRODUCTO, PI_COD_CLIENTE);
+          
 
-                MessageBox.Show("Los Datos ingresados fueron guardados correctamente");
-            limpiar();
-            listarventa();
+            string datos = capaNegociosVenta.SP_INSERT_VENTA(PI_COD_PRODUCTO, PI_CANTIDAD, PI_NOMBRE_PRODUCTO, PI_COD_CLIENTE);
+
+            if (datos.Equals("OK"))
+            {
+                MessageBox.Show("Se agregaraon correctamente los cambios: " + textBox_codventa.Text + " con Exito ");
+                limpiar();
+                listarventa();
+            }
+            else
+            {
+                MessageBox.Show(datos);
+                listarventa();
+            }
+
+          
 
 
         }
