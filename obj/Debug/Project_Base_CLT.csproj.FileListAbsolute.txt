@@ -70,3 +70,7 @@ C:\Users\lsilva\Desktop\Project_Base_CLT - Local\bin\Debug\System.Text.Encodings
 C:\Users\lsilva\Desktop\Project_Base_CLT - Local\bin\Debug\System.Text.Json.xml
 C:\Users\lsilva\Desktop\Project_Base_CLT - Local\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\lsilva\Desktop\Project_Base_CLT - Local\bin\Debug\System.ValueTuple.xml
+C:\Users\lsilva\Desktop\Project_Base_CLT - Local\obj\Debug\Interop.Excel.dll
+C:\Users\lsilva\Desktop\Project_Base_CLT - Local\obj\Debug\Interop.Office.dll
+C:\Users\lsilva\Desktop\Project_Base_CLT - Local\obj\Debug\Interop.VBIDE.dll
+C:\Users\lsilva\Desktop\Project_Base_CLT - Local\obj\Debug\Project_Base_CLT.csproj.ResolveComReference.cache

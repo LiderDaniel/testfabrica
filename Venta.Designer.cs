@@ -52,6 +52,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridventa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_cliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -285,12 +286,23 @@
             this.label9.Text = "LISTA PRODUCTO";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(931, 312);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 43;
+            this.button6.Text = "EXPORTAR";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1144, 773);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label8);
@@ -353,5 +365,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button6;
     }
 }
