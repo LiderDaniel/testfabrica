@@ -395,6 +395,12 @@ namespace f2
         {
             ExportarDatos(datagridventa);
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            // string mensaje = capaNegociosVenta.(Convert.ToInt32(textBox_codventa.Text));
+        
+        }
     }
     }
 

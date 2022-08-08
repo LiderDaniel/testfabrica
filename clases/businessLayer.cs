@@ -395,7 +395,7 @@ namespace f2
 
 
 
-        public string SP_INSERT_PRODUCTO(string PI_PRODUCTO, double PI_PRECIO,int PI_CANTIDAD)
+        public string SP_INSERT_PRODUCTO(string PI_PRODUCTO, double PI_PRECIO, int PI_CANTIDAD)
         {
             /* --
             --
@@ -435,7 +435,7 @@ namespace f2
         }
 
 
-        public  string  SP_DELETE_PRODUCTO(int pi_codigo)
+        public string SP_DELETE_PRODUCTO(int pi_codigo)
         {
 
             string datos = "";
@@ -544,7 +544,7 @@ namespace f2
 
 
         //GUARDAR EN LA TABLA
-        public string SP_INSERT_VENTA(int PI_COD_PRODUCTO, int PI_CANTIDAD, string PI_NOMBRE_PRODUCTO,int PI_COD_CLIENTE)
+        public string SP_INSERT_VENTA(int PI_COD_PRODUCTO, int PI_CANTIDAD, string PI_NOMBRE_PRODUCTO, int PI_COD_CLIENTE)
         {
             /* --
             --
@@ -564,9 +564,9 @@ namespace f2
             coman.Parameters.Add("PI_COD_PRODUCTO ", PI_COD_PRODUCTO);
             coman.Parameters.Add("PI_CANTIDAD ", PI_CANTIDAD);
             coman.Parameters.Add("PI_NOMBRE_PRODUCTO ", PI_NOMBRE_PRODUCTO);
-            coman.Parameters.Add(",PI_COD_CLIENTE  ",  PI_COD_CLIENTE);
-            
-           
+            coman.Parameters.Add(",PI_COD_CLIENTE  ", PI_COD_CLIENTE);
+
+
             coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);
             coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
             try
@@ -654,7 +654,37 @@ namespace f2
             return datos;
 
         }
-    }
 
+
+        //LISTAR PRECIO
+        public string SP_LISTAR_PRECIO(int COD_VENTA)
+        {
+
+            string datos = "";
+            OracleConnection cone = new OracleConnection(cadenaDeConeccion);
+            OracleCommand coman = new OracleCommand("USER_ORA.PKG_VENTA.SP_LISTAR_PRECIO", cone);
+            coman.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            coman.Parameters.Add("COD_VENTA", OracleDbType.Int32).Value = Convert.ToInt32(COD_VENTA);
+
+            //coman.Parameters.Add("po_retorno", OracleDbType.NVarchar2, 500);  //NOSE UTILIZAN ESTOS DATOS  POR QUE SOLO PIDE UNO PARAMETRO Y NOSOTROS LE ESTABAMOS INGRESANDO DOS
+            //coman.Parameters["po_retorno"].Direction = ParameterDirection.Output;
+            try
+            {
+                cone.Open();
+                coman.ExecuteNonQuery();
+                cone.Close();
+                //datos = coman.Parameters["po_retorno"].Value.ToString();
+            }
+            catch
+            {
+                throw;
+
+            }
+            return datos;
+        }
+
+    }
 }
 

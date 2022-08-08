@@ -53,6 +53,8 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridventa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_cliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -83,7 +85,7 @@
             this.datagridventa.BackgroundColor = System.Drawing.SystemColors.Info;
             this.datagridventa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridventa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridventa.Location = new System.Drawing.Point(272, 39);
+            this.datagridventa.Location = new System.Drawing.Point(272, 27);
             this.datagridventa.Name = "datagridventa";
             this.datagridventa.Size = new System.Drawing.Size(642, 296);
             this.datagridventa.TabIndex = 21;
@@ -233,7 +235,7 @@
             this.label7.AutoSize = true;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(274, 9);
+            this.label7.Location = new System.Drawing.Point(272, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 15);
             this.label7.TabIndex = 38;
@@ -256,7 +258,7 @@
             this.label8.AutoSize = true;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(173, 437);
+            this.label8.Location = new System.Drawing.Point(181, 437);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 15);
             this.label8.TabIndex = 40;
@@ -296,12 +298,33 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "label10";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1044, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.TabIndex = 45;
+            this.label11.Text = "prueba";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
             // Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1144, 773);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dataGridView2);
@@ -366,5 +389,7 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

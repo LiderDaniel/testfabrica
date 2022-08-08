@@ -52,14 +52,15 @@
             this.preciomensaje = new System.Windows.Forms.Label();
             this.cantidadmensaje = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // BT_SALIR
             // 
-            this.BT_SALIR.Location = new System.Drawing.Point(817, 390);
+            this.BT_SALIR.Location = new System.Drawing.Point(666, 220);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(100, 23);
+            this.BT_SALIR.Size = new System.Drawing.Size(75, 23);
             this.BT_SALIR.TabIndex = 23;
             this.BT_SALIR.Text = "SALIR";
             this.BT_SALIR.UseVisualStyleBackColor = true;
@@ -67,7 +68,7 @@
             // 
             // BT_EDITAR
             // 
-            this.BT_EDITAR.Location = new System.Drawing.Point(710, 390);
+            this.BT_EDITAR.Location = new System.Drawing.Point(666, 168);
             this.BT_EDITAR.Name = "BT_EDITAR";
             this.BT_EDITAR.Size = new System.Drawing.Size(75, 23);
             this.BT_EDITAR.TabIndex = 22;
@@ -88,7 +89,7 @@
             // 
             // BT_ELIMINAR
             // 
-            this.BT_ELIMINAR.Location = new System.Drawing.Point(597, 390);
+            this.BT_ELIMINAR.Location = new System.Drawing.Point(666, 118);
             this.BT_ELIMINAR.Name = "BT_ELIMINAR";
             this.BT_ELIMINAR.Size = new System.Drawing.Size(75, 23);
             this.BT_ELIMINAR.TabIndex = 20;
@@ -98,7 +99,7 @@
             // 
             // BT_AGREGAR
             // 
-            this.BT_AGREGAR.Location = new System.Drawing.Point(480, 390);
+            this.BT_AGREGAR.Location = new System.Drawing.Point(666, 60);
             this.BT_AGREGAR.Name = "BT_AGREGAR";
             this.BT_AGREGAR.Size = new System.Drawing.Size(75, 23);
             this.BT_AGREGAR.TabIndex = 19;
@@ -108,9 +109,9 @@
             // 
             // BT_LISTA
             // 
-            this.BT_LISTA.Location = new System.Drawing.Point(221, 390);
+            this.BT_LISTA.Location = new System.Drawing.Point(460, 249);
             this.BT_LISTA.Name = "BT_LISTA";
-            this.BT_LISTA.Size = new System.Drawing.Size(233, 23);
+            this.BT_LISTA.Size = new System.Drawing.Size(187, 23);
             this.BT_LISTA.TabIndex = 18;
             this.BT_LISTA.Text = "LISTA DE PRODUCTOS";
             this.BT_LISTA.UseVisualStyleBackColor = true;
@@ -119,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(477, 334);
+            this.label3.Location = new System.Drawing.Point(457, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 17;
@@ -128,10 +129,10 @@
             // 
             // textBox_Precio
             // 
-            this.textBox_Precio.Location = new System.Drawing.Point(480, 360);
+            this.textBox_Precio.Location = new System.Drawing.Point(460, 168);
             this.textBox_Precio.MaxLength = 50;
             this.textBox_Precio.Name = "textBox_Precio";
-            this.textBox_Precio.Size = new System.Drawing.Size(292, 20);
+            this.textBox_Precio.Size = new System.Drawing.Size(187, 20);
             this.textBox_Precio.TabIndex = 16;
             this.textBox_Precio.Text = "0";
             this.textBox_Precio.TextChanged += new System.EventHandler(this.textBox_Precio_TextChanged);
@@ -139,10 +140,10 @@
             // 
             // texbox_nombre
             // 
-            this.texbox_nombre.Location = new System.Drawing.Point(144, 360);
+            this.texbox_nombre.Location = new System.Drawing.Point(460, 118);
             this.texbox_nombre.MaxLength = 50;
             this.texbox_nombre.Name = "texbox_nombre";
-            this.texbox_nombre.Size = new System.Drawing.Size(310, 20);
+            this.texbox_nombre.Size = new System.Drawing.Size(187, 20);
             this.texbox_nombre.TabIndex = 15;
             this.texbox_nombre.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.texbox_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texbox_nombre_KeyPress);
@@ -150,10 +151,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 360);
+            this.textBox1.Location = new System.Drawing.Point(460, 62);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.Size = new System.Drawing.Size(187, 20);
             this.textBox1.TabIndex = 14;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -161,7 +162,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(141, 334);
+            this.label2.Location = new System.Drawing.Point(457, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 13);
             this.label2.TabIndex = 13;
@@ -171,7 +172,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 334);
+            this.label1.Location = new System.Drawing.Point(457, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 24;
@@ -179,10 +180,10 @@
             // 
             // textBox4_Cantidad
             // 
-            this.textBox4_Cantidad.Location = new System.Drawing.Point(804, 360);
+            this.textBox4_Cantidad.Location = new System.Drawing.Point(460, 223);
             this.textBox4_Cantidad.MaxLength = 50;
             this.textBox4_Cantidad.Name = "textBox4_Cantidad";
-            this.textBox4_Cantidad.Size = new System.Drawing.Size(292, 20);
+            this.textBox4_Cantidad.Size = new System.Drawing.Size(187, 20);
             this.textBox4_Cantidad.TabIndex = 27;
             this.textBox4_Cantidad.Text = "0";
             this.textBox4_Cantidad.TextChanged += new System.EventHandler(this.textBox4_Cantidad_TextChanged);
@@ -191,7 +192,7 @@
             // CANTIDAD
             // 
             this.CANTIDAD.AutoSize = true;
-            this.CANTIDAD.Location = new System.Drawing.Point(801, 334);
+            this.CANTIDAD.Location = new System.Drawing.Point(457, 200);
             this.CANTIDAD.Name = "CANTIDAD";
             this.CANTIDAD.Size = new System.Drawing.Size(62, 13);
             this.CANTIDAD.TabIndex = 28;
@@ -209,23 +210,25 @@
             // mensajeproducto
             // 
             this.mensajeproducto.AutoSize = true;
-            this.mensajeproducto.Location = new System.Drawing.Point(141, 360);
+            this.mensajeproducto.Location = new System.Drawing.Point(457, 118);
             this.mensajeproducto.Name = "mensajeproducto";
             this.mensajeproducto.Size = new System.Drawing.Size(0, 13);
             this.mensajeproducto.TabIndex = 30;
+            this.mensajeproducto.Click += new System.EventHandler(this.mensajeproducto_Click);
             // 
             // mensajeprecio
             // 
             this.mensajeprecio.AutoSize = true;
-            this.mensajeprecio.Location = new System.Drawing.Point(477, 360);
+            this.mensajeprecio.Location = new System.Drawing.Point(457, 168);
             this.mensajeprecio.Name = "mensajeprecio";
             this.mensajeprecio.Size = new System.Drawing.Size(0, 13);
             this.mensajeprecio.TabIndex = 31;
+            this.mensajeprecio.Click += new System.EventHandler(this.mensajeprecio_Click);
             // 
             // mensajecantidad
             // 
             this.mensajecantidad.AutoSize = true;
-            this.mensajecantidad.Location = new System.Drawing.Point(804, 360);
+            this.mensajecantidad.Location = new System.Drawing.Point(460, 207);
             this.mensajecantidad.Name = "mensajecantidad";
             this.mensajecantidad.Size = new System.Drawing.Size(0, 13);
             this.mensajecantidad.TabIndex = 32;
@@ -241,23 +244,25 @@
             // nombremensaje
             // 
             this.nombremensaje.AutoSize = true;
-            this.nombremensaje.Location = new System.Drawing.Point(141, 360);
+            this.nombremensaje.Location = new System.Drawing.Point(457, 118);
             this.nombremensaje.Name = "nombremensaje";
             this.nombremensaje.Size = new System.Drawing.Size(0, 13);
             this.nombremensaje.TabIndex = 34;
+            this.nombremensaje.Click += new System.EventHandler(this.nombremensaje_Click);
             // 
             // preciomensaje
             // 
             this.preciomensaje.AutoSize = true;
-            this.preciomensaje.Location = new System.Drawing.Point(477, 360);
+            this.preciomensaje.Location = new System.Drawing.Point(457, 168);
             this.preciomensaje.Name = "preciomensaje";
             this.preciomensaje.Size = new System.Drawing.Size(0, 13);
             this.preciomensaje.TabIndex = 35;
+            this.preciomensaje.Click += new System.EventHandler(this.preciomensaje_Click);
             // 
             // cantidadmensaje
             // 
             this.cantidadmensaje.AutoSize = true;
-            this.cantidadmensaje.Location = new System.Drawing.Point(801, 360);
+            this.cantidadmensaje.Location = new System.Drawing.Point(457, 207);
             this.cantidadmensaje.Name = "cantidadmensaje";
             this.cantidadmensaje.Size = new System.Drawing.Size(0, 13);
             this.cantidadmensaje.TabIndex = 36;
@@ -273,12 +278,23 @@
             this.label4.TabIndex = 37;
             this.label4.Text = "LISTA DE PRODUCTOS";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(460, 278);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 53);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "EXPORTAR";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1139, 421);
+            this.ClientSize = new System.Drawing.Size(778, 340);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cantidadmensaje);
             this.Controls.Add(this.preciomensaje);
@@ -339,5 +355,6 @@
         private System.Windows.Forms.Label preciomensaje;
         private System.Windows.Forms.Label cantidadmensaje;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }

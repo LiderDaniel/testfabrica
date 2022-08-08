@@ -40,7 +40,35 @@ namespace f2
         //{
         //    InitializeComponent();
         //}
+        public void ExportarDatos(DataGridView datalistado)
+        {
+            Microsoft.Office.Interop.Excel.Application exportarexcel = new Microsoft.Office.Interop.Excel.Application();
+            exportarexcel.Application.Workbooks.Add(true);
 
+            int indicecolumna = 0;
+            foreach (DataGridViewColumn columna in datalistado.Columns)
+            {
+                indicecolumna++;
+
+                exportarexcel.Cells[1, indicecolumna] = columna.Name;
+            }
+
+            int indicefila = 0;
+
+            foreach (DataGridViewRow fila in datalistado.Rows)
+            {
+                indicefila++;
+                indicecolumna = 0;
+
+                foreach (DataGridViewColumn columna in datalistado.Columns)
+                {
+                    indicecolumna++;
+                    exportarexcel.Cells[indicefila + 1, indicecolumna] = fila.Cells[columna.Name].Value;
+                }
+
+            }
+            exportarexcel.Visible = true;
+        }
         private void Producto_Load(object sender, EventArgs e)
         {
 
@@ -80,6 +108,8 @@ namespace f2
            
             //capaNegociosProducto.SP_DELETE_PRODUCTO(Convert.ToInt32(textBox1.Text));
                 MessageBox.Show("El cliente con numero de id : " + textBox1.Text + " Fue Eliminado ");
+                listarproducto();
+                limpiar();
             }
             else
             {
@@ -314,6 +344,31 @@ namespace f2
             texbox_nombre.Clear();
             textBox_Precio.Clear();
             textBox4_Cantidad.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ExportarDatos(dataGridView2);
+        }
+
+        private void mensajeproducto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nombremensaje_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void preciomensaje_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mensajeprecio_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

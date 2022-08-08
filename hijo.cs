@@ -42,7 +42,35 @@ namespace f2
             gc_cliente.DataSource = null;
             gc_cliente.DataSource = capaNegociosHijo.SP_LISTAR_CLIENTES();
         }
+        public void ExportarDatos(DataGridView datalistado)
+        {
+            Microsoft.Office.Interop.Excel.Application exportarexcel = new Microsoft.Office.Interop.Excel.Application();
+            exportarexcel.Application.Workbooks.Add(true);
 
+            int indicecolumna = 0;
+            foreach (DataGridViewColumn columna in datalistado.Columns)
+            {
+                indicecolumna++;
+
+                exportarexcel.Cells[1, indicecolumna] = columna.Name;
+            }
+
+            int indicefila = 0;
+
+            foreach (DataGridViewRow fila in datalistado.Rows)
+            {
+                indicefila++;
+                indicecolumna = 0;
+
+                foreach (DataGridViewColumn columna in datalistado.Columns)
+                {
+                    indicecolumna++;
+                    exportarexcel.Cells[indicefila + 1, indicecolumna] = fila.Cells[columna.Name].Value;
+                }
+
+            }
+            exportarexcel.Visible = true;
+        }
         private void hijo_Load(object sender, EventArgs e) { }
 
         private void label1_Click(object sender, EventArgs e)
@@ -305,6 +333,16 @@ namespace f2
         }
 
         private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            ExportarDatos(gc_cliente);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
